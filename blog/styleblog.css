@@ -7,57 +7,63 @@ body {
 }
 
 #id_myblog {
-  font-family:sans-serif;
-  font-size: 36px;
-  color: #6699ff;
+  font-family: 'Architects Daughter', cursive;
+  font-size: 40px;
+  color: #3366ff;
   text-align: center;
+  text-shadow: 4px 4px 4px #aaa;
+
 }
 
 h1 {
-font-family:sans-serif;
-font-size: 26px;
-color: #6699ff;
+font-family: 'Architects Daughter', cursive;
+color: #3366ff;
 
 }
 
 p {
   text-align: left;
   font-size: 16px;
-  font-family: sans-serif;
-  font-style: normal;
   color: #000d33;
 }
 
 a {
-  font-family:sans-serif;
-  font-style: italic;
-  color: #ff9999;
+  text-align: center;
+  font-family: 'Architects Daughter', cursive;
+  color: #3366ff;
+  padding: 10px;
+  font-size: 20px;
+
+
 }
 a:hover {
   font-weight: bold;
-  text-shadow: 1px 1px grey;
+  font-size: 30px;
+
+
 }
+
+.row {
+  width: 100%;
+  padding: 20px;
+  margin: 40px;
+}
+
 .reflection {
-  font-size: 20px;
 }
 
 .reflection:hover {
-  font-size: 26px;
 }
 
 .htmlcssdom {
-  font-size: 20px;
 }
 
 .htmlcssdom:hover {
-  font-size: 26px;
 }
 
-#id_timeandhabits {
-  font-size: 20px;
-}
+.timeandhabits {
 
-#id_timeandhabits:hover {
-  font-size: 26px;
+}
+.timeandhabits:hover {
 
 }
