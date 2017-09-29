@@ -4,34 +4,42 @@ body {
     background-color:#f0f4f5;
     background-repeat: no-repeat;
     background-size: cover;
+    background-image:url("bucket4.png");
 }
 
 #id_myblog {
-  font-family: 'Architects Daughter', cursive;
-  font-size: 40px;
-  color: #3366ff;
+  font-family: 'Asap Condensed', sans-serif;
+  font-size: 55px;
+  color: #ffb3b3;
   text-align: center;
   text-shadow: 4px 4px 4px #aaa;
-
 }
 
-h1 {
-font-family: 'Architects Daughter', cursive;
-color: #3366ff;
-
-}
-
-p {
+#id_home {
+  padding: 0px;
   text-align: left;
-  font-size: 16px;
-  color: #000d33;
+  margin: 0px;
+}
+
+.row {
+  width: 100%;
+  padding: 0px;
+  margin: 0px;
+  border: 50px;
+  text-align: center;
+}
+
+.bucket {
+width: 15%;
+padding: 40px;
+align-content: center;
 }
 
 a {
   text-align: center;
-  font-family: 'Architects Daughter', cursive;
+  font-family: 'Asap Condensed', sans-serif;
   color: #3366ff;
-  padding: 10px;
+  padding: 25px;
   font-size: 20px;
 
 
@@ -39,14 +47,19 @@ a {
 a:hover {
   font-weight: bold;
   font-size: 30px;
+}
 
+h1 {
+color: #3366ff;
+font-family: 'Asap Condensed', sans-serif;
 
 }
 
-.row {
-  width: 100%;
-  padding: 20px;
-  margin: 40px;
+p {
+  text-align: left;
+  font-size: 16px;
+  color: #000d33;
+  font-family: 'Asap Condensed', sans-serif;
 }
 
 .reflection {
