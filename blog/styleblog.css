@@ -24,7 +24,12 @@ margin: 20px;
 }
 
 .hrefbox {
-  margin-left: 70px;
+  margin-left: 145px;
+  padding: px;
+}
+
+.container {
+  box-sizing: 100%;
 }
 
 a {
@@ -36,7 +41,7 @@ a {
 }
 
 a:hover {
-  color: black;
+  color: ;
   font-size: 25px;
 }
 
@@ -64,12 +69,37 @@ p {
     border-radius: 5px;
 }
 
+.desktopindex {
+  border: 100px;
+  padding-left: 60px;
+  padding-top: 40px;
 
 }
 
+.desktopblog {
+  border: 100px;
+  padding-left: 60px;
+  padding-top: 1px;
+
+}
+
+.mobileindex {
+  padding-top: 0px;
+  padding-left: 5px;
+
+}
+
+.mobileblog {
+  padding-top: 0px;
+  padding-left: 5px;
+}
+
 img {
-  height: 110px;
-  width: 130px;
+  border: 20px;
+  padding: 20px;
+
+}
+
 }
 
 .cardicon {
