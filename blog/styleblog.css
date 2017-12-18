@@ -2,7 +2,7 @@
   border: 10px;
   margin: 45px;
   font-family: 'Barlow Semi Condensed', sans-serif;
-  font-size: 40px;
+  font-size: 35px;
   text-align: center;
 
 }
@@ -50,6 +50,10 @@ h1 {
   padding: 10px;
 }
 
+br {
+  padding-left: 20px;
+}
+
 p {
   text-align: ;
   font-size: 15px;
@@ -59,6 +63,12 @@ p {
 
 li {
   padding-top: 15px;
+}
+
+
+.code_examples {
+  color: #ffcc00;
+
 }
 
 #id_firstul {

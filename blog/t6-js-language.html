@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Kimmi's Blog</title>
+    <meta charset="UTF-8">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/3.0.3/normalize.css" type="text/css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.css" type="text/css">
+    <link rel="stylesheet" href="./styleblog.css" type="text/css">
+    <!-- include skeleton css framework for multi device rendering -->
+    <link href="https://fonts.googleapis.com/css?family=Barlow+Semi+Condensed" rel="stylesheet">
+</head>
+
+    <body>
+      <a href="../index.html"><img src="../images/bucket4.png" width="100" height="90"></a>
+      <h2 id="id_blogtitles">JavaScript Language</h2>
+        <div class="ten columns">
+
+         <h1>In the JavaScript language, describe all the use cases for each of:</h1>
+         <ul type="square">
+<!-- parenthesis part 1 answers-->
+         <li>parentheses () - e.g. '1. Execute a function var result = doSomething()':</li>
+              <p><b>1:</b> Parenthesis () are used to define functions parameters, e.g; </p>
+              <p>function aFunction (parameter1, possibly2) {</p>
+              <p>};</p>
+              <p>Sometimes functions have no parameters. In this case the parenthesis is left empty:</p>
+              <p> function aFunction () {</p>
+              <p>};</p>
+<!-- parenthesis part 2 answers-->
+              <p><b>2:</b> Parathesis are additionally used when calling functions, which can look something like this:</p>
+                <p> aFunction();</p>
+<!-- parenthesis part 3 answers-->
+              <p><b>3:</b> We also see parathesis commonly when grouping expressions, e.g;</p>
+              <p> (var i = 0; i < something; i++)</p>
+<!-- brackets part 1 answers-->
+            <li>brackets []:</li>
+              <p><b>1:</b> Most commonly, brackets are used to both create and otherwise access arrays.</p>
+              <p>E.g; to create an array: var array = ['here', 'is', 'a', 'long', 'list', 'of', 'array', 'items'] .</p>
+              <p>To access values within this array, we can call the array using its variable name, 'array' and then within brackets specify which array item we want using its value. In this example, array[0] would return 'here',  array[3]  would return 'long', and array[7] would return the final item in the array, 'items'.</p>
+<!-- brackets part 2 answers-->
+              <p><b>2:</b> Brackets are also used in bracket notations, which are formatted as brackets with a set of double quotes (" ") inside them. Bracket notation and dot notation are interchangeable; they do the same thing. Dot notation that looks something like this: object.property, would be written as:  object["property"]  using bracket notation. </p>
+<!-- braces part 1 answers-->
+            <li>braces {}:</li>
+              <p><b>1:</b> Braces define the beginnings and ends of a function, as well as  delineates blocks within functions. These blocks include if and loop bodies. E.g;
+              <p>function aFunction () {</br>
+                <br> for (expression) { </br>
+                <br>    if (expression) {} </br>
+                <br>    }</br>
+                <br>    else if {}</br>
+                <br>   }</br>
+                <br>}</br>
+             </p>
+
+<!-- braces part 2 answers-->
+              <p><b>2: </b>Braces can be used to define arrays otherwise not defined within brackets. Here is an example using the .push function from our minesweeper.js file to push strings onto a previously empty array;
+                <p>newBoard.cells.push({row: noRows, col: noCols, isMine: hasMine, hidden: true});</p>
+<!-- single and double quotes-->
+           <li>single quotes '', and double quotes "":</li>
+              <p><b>1:</b> From my understanding, the use of single '', or double "" quotations is interchangeable. The use of one set of quotes alone can be tricky when using quotations <i> within </i> statements, however.
+              In this case, you will want to use the other set of quotations that you did not use to open the statement, like this;</p>
+              <p>'the message was written: "in double quotes!"'</p>
+              <p>The use of double quotations is useful if the statement were to include any apostrophes (aka a single quote opening/closing statement) e.g;</p>
+              <p>The statement: 'I've made a mistake!' would only return 'I', so "I've made a mistake!" is a smarter move. </p>
+
+
+       </ul>
+
+
+
+
+       </div>
+
+ </body>
+</html>
