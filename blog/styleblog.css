@@ -1,3 +1,7 @@
+body {
+
+}
+
 #id_kimmirindel {
   border: 10px;
   margin: 45px;
@@ -38,11 +42,13 @@ a {
   color: black;
   margin: 10px;
 
+
 }
 
 a:hover {
   color: black;
   font-size: 25px;
+
 }
 
 h1 {
