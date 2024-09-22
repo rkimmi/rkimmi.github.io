@@ -4,17 +4,54 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Welcome to my island</title>
+    <title>𓆝 ⋆.˚ ﾒ𝟶ﾒ𝟶</title>
     <style>
+        @keyframes revealAfterAnimation {
+            0% { opacity: 0; }
+            100% { opacity: 1; }
+        }
+
+        body {
+            position: relative;
+            width: 100vw;
+            height: 100vh;
+            overflow: hidden;
+        }
+
         title {
             color: dodgerblue;
         }
+
+        .nav-item {  
+            position: absolute;
+            text-decoration: none;
+            transition: transform 5s ease;
+            filter: drop-shadow(15px 10px 4px #00000083);
+        }
+
+        .nav-item:hover {
+            transform: scale(1.2); 
+        }
+
+        .nav-emoji {
+            font-size: 4rem;
+        }
+
+        .nav-img {
+            width: 10rem;
+        }
+
     </style>
 </head>
 <body>
-<div class="">
-    <a href="/ascii-demo">ASCII demo </a>
+    <script type="text/javascript" src="./homepage.js"></script>
+        <a class="nav-item nav-emoji" href="/photosblog" aria-label="photos">📸</a>
+        <a class="nav-item" href="http://www.watl.technology" aria-label="WATL">
+            <img class="nav-img" src="./images/angel.png" alt="WATL online"/>
+        </a>
+        <a class="nav-item" href=" " aria-label=""></a>
+    <!-- <a href="/ascii-demo">ASCII demo </a>
     <a href="/audio-visualiser-1">Audio visualiser v1</a>
-</div>
+    <a href="/blog">click</a> -->
 </body>
 </html>
