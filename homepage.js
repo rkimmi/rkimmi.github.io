@@ -39,23 +39,21 @@ function setMaxDimensions(item, scaleFactor) {
     const baseHeight = item.offsetHeight;
     const maxWidth = baseWidth * scaleFactor;
     const maxHeight = baseHeight * scaleFactor;
+
     item.dataset.maxWidth = maxWidth;
     item.dataset.maxHeight = maxHeight;
 }
 
 function isOverlapping(item1, item2) {
-    // Get the positions and sizes of item1
     const [x1, y1, w1, h1] = getDimensions(item1);
     const [x2, y2, w2, h2] = getDimensions(item2);
-    
+    // x + w is x-coordinate of the top-right corner
+    // y + h is y-coordinate of the bottom (both edges)
     if (w1 === 0 || w2 === 0) return false;
 
-    // Check if the items overlap horizontally and vertically
-    const horizontalOverlap = (x1 + w1 >= x2 || x2 + w2 <= x1);
-    const verticalOverlap = (y1 + h1 <= y2 || y2 + h2 >= y1);
+    const horizontalOverlap = (x1 + w1 > x2 && x2 + w2 > x1);
+    const verticalOverlap = (y1 + h1 > y2 && y2 + h2 > y1);
 
-
-    // If both horizontally and vertically overlap, they are overlapping
     return horizontalOverlap && verticalOverlap;
 }
 
@@ -65,7 +63,6 @@ function getDimensions(item) {
     const y = parseFloat(item.style.top);
     const w = parseFloat((item.dataset.maxWidth) || item.offsetWidth) + buffer;
     const h = parseFloat((item.dataset.maxHeight) || item.offsetHeight) + buffer;
-    console.log(x,y, w,h)
     return [ x, y, w, h ]
 }
 
