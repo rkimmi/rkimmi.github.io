@@ -11,7 +11,8 @@ function styleAndPositionNavItems(fontColor) {
     const navItems = document.getElementsByClassName('nav-item');
     const scaleFactor = 1.2; 
     const containerWidth = window.innerWidth - 100; 
-    const containerHeight = window.innerHeight - 100;
+    // Make sure taller nav items are fully in view
+    const containerHeight = window.innerHeight - 200; 
 
     const placedItems = [];
     for (let item of navItems) {
