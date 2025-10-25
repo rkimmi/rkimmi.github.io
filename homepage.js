@@ -1,12 +1,11 @@
 addEventListener("DOMContentLoaded", () => {
-  let theme = window.localStorage.getItem("theme") ?? "light";
   setBgColor();
   styleAndPositionNavItems();
 });
 
-function setBgColor(theme) {
+function setBgColor() {
   const body = document.getElementsByTagName("body")[0];
-  const backgroundColor = getBgColor(theme);
+  const backgroundColor = getBgColor();
 
   body.style.backgroundColor = backgroundColor;
 }
@@ -16,8 +15,11 @@ const bgColor = new Map([
   ["dark", "#363d51"],
 ]);
 
-function getBgColor(theme) {
-  return bgColor.get(theme) ?? bgColor.get("light");
+function getBgColor() {
+  let theme = localStorage.getItem("theme");
+  if (!theme) theme = "light";
+
+  return bgColor.get(theme);
 }
 
 function toggleTheme() {
