@@ -1,57 +1,105 @@
 <!DOCTYPE html>
 <html lang="en" xmlns="http://www.w3.org/1999/html">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>𓆝 ⋆.˚ ﾒ𝟶ﾒ𝟶</title>
     <style>
-        @keyframes revealAfterAnimation {
-            0% { opacity: 0; }
-            100% { opacity: 1; }
+      @keyframes revealAfterAnimation {
+        0% {
+          opacity: 0;
         }
+        100% {
+          opacity: 1;
+        }
+      }
 
-        body {
-            position: relative;
-            width: 100vw;
-            height: 100vh;
-            overflow: hidden;
-        }
+      body {
+        position: relative;
+        width: 100vw;
+        height: 100vh;
+        overflow: hidden;
+      }
 
-        title {
-            color: dodgerblue;
-        }
+      img, a {
+        -webkit-touch-callout: none; /* disable long-press menu */
+      }
 
-        .nav-item {  
-            position: absolute;
-            text-decoration: none;
-            transition: transform 5s ease;
-            filter: drop-shadow(15px 10px 4px #00000083);
-        }
+      title {
+        color: dodgerblue;
+      }
 
-        .nav-item:hover {
-            transform: scale(1.2); 
-        }
+      .nav-item {
+        position: absolute;
+        text-decoration: none;
+        transition: transform 3s ease;
+        filter: drop-shadow(15px 10px 4px #00000083);
+      }
 
-        .nav-emoji {
-            font-size: 4rem;
-        }
+      .scale:hover, .scale:active {
+        transform: scale(1.2);
+      }
 
-        .nav-img {
-            width: 10rem;
-        }
+      .nav-img-angel {
+        max-width: 10rem;
+        max-height: 10rem;
+      }
+
+      .nav-img-shell {
+        max-width: 7rem;
+        max-height: 7rem;
+      }
+
+      .flip .back,
+      .flip .front {
+        transition: opacity 1s ease;
+      }
+
+      .flip .back {
+        opacity: 0;
+        transform: translate(-55px, -65px);
+      }
+
+      .flip:hover .back, .flip:active .back {
+        opacity: 1;
+        user-select: none;
+      }
+
+      .flip:hover .front, .flip:active .front {
+        opacity: 0;
+        user-select: none;
+      }
 
     </style>
-</head>
-<body>
+  </head>
+  <body>
     <script type="text/javascript" src="./homepage.js"></script>
-        <a class="nav-item nav-emoji" href="/photos-blog" aria-label="photos">📸</a>
-        <a class="nav-item" href="http://www.watl.technology" aria-label="WATL">
-            <img class="nav-img" src="./images/angel.png" alt="WATL online"/>
-        </a>
-        <a class="nav-item" href=" " aria-label=""></a>
+    <a class="nav-item flip" href="/photos-blog" aria-label="photos">
+        <img
+          src="./images/shell_front.png"
+          class="nav-img-shell front"
+          alt="photo blog"
+        />
+        <img
+          src="./images/shell_back.png"
+          class="nav-img-shell back"
+          alt="photo blog"
+        />
+      </div>
+    </a>
+    <a
+      class="nav-item scale"
+      href="http://www.watl.technology"
+      aria-label="WATL"
+    >
+      <img class="nav-img-angel" src="./images/angel.png" alt="WATL online" />
+    </a>
+    <!-- <a class="nav-item" href=" " aria-label=""></a> -->
+    <!-- <span class="nav-item" onclick="toggleTheme()" aria-label="">>></span> -->
+
     <!-- <a href="/ascii-demo">ASCII demo </a>
     <a href="/audio-visualiser-1">Audio visualiser v1</a>
     <a href="/blog">click</a> -->
-</body>
+  </body>
 </html>
