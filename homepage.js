@@ -13,7 +13,7 @@ function setBgColor(theme) {
 
 const bgColor = new Map([
   ["light", "#c9ceda"],
-  ["dark", "#2c4282"],
+  ["dark", "#363d51"],
 ]);
 
 function getBgColor(theme) {

@@ -15,6 +15,14 @@
         }
       }
 
+      html, body {
+        touch-action: manipulation;
+      }
+
+      * {
+        -webkit-tap-highlight-color: transparent;
+      }
+
       body {
         position: relative;
         width: 100vw;
@@ -25,12 +33,14 @@
       img, a {
         -webkit-touch-callout: none; /* disable long-press menu */
       }
+      
 
       title {
         color: dodgerblue;
       }
 
       .nav-item {
+        cursor: pointer;
         position: absolute;
         text-decoration: none;
         transition: transform 3s ease;
