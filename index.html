@@ -63,7 +63,7 @@
 
       .flip .back,
       .flip .front {
-        transition: opacity 1s ease;
+        transition: opacity 1.5s ease;
       }
 
       .flip .back {
@@ -79,6 +79,23 @@
       .flip:hover .front, .flip:active .front {
         opacity: 0;
         user-select: none;
+      }
+
+      @media (min-width: 768px) {
+        .nav-img-angel {
+          max-width: 12rem;
+          max-height: 12rem;
+        }
+
+        .nav-img-shell {
+          max-width: 16rem;
+          max-height: 16rem;
+        }
+
+        .flip .back {
+          opacity: 0;
+          transform: translate(-110px, -125px);
+        }
       }
 
     </style>
