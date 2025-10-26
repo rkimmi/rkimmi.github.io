@@ -47,7 +47,7 @@
         filter: drop-shadow(15px 10px 4px #00000083);
       }
 
-      .scale:hover, .scale:active {
+      .scale:hover, .scale:active, .scale.clicked {
         transform: scale(1.2);
       }
 
@@ -71,12 +71,12 @@
         transform: translate(-55px, -65px);
       }
 
-      .flip:hover .back, .flip:active .back {
+      .flip:hover .back, .flip:active .back, .clicked .back {
         opacity: 1;
         user-select: none;
       }
 
-      .flip:hover .front, .flip:active .front {
+      .flip:hover .front, .flip:active .front, .clicked .front {
         opacity: 0;
         user-select: none;
       }

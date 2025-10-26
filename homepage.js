@@ -1,7 +1,25 @@
-addEventListener("DOMContentLoaded", () => {
+document.addEventListener("DOMContentLoaded", () => {
   setBgColor();
   styleAndPositionNavItems();
+
+  document.querySelectorAll("a.nav-item").forEach((a) => {
+    const handleClick = (e) => {
+      e.preventDefault();
+      delayNavigate(a);
+    };
+
+    a.addEventListener("click", handleClick);
+    a.addEventListener("touchstart", handleClick, { passive: false });
+  });
 });
+
+function delayNavigate(a) {
+  a.classList.add("clicked");
+
+  setTimeout(() => {
+    window.location.href = a.href;
+  }, 1200);
+}
 
 function setBgColor() {
   const body = document.getElementsByTagName("body")[0];
