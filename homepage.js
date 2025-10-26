@@ -55,14 +55,16 @@ function toggleTheme() {
 function styleAndPositionNavItems() {
   const navItems = document.getElementsByClassName("nav-item");
   const scaleFactor = 1.2;
-  const containerWidth = window.innerWidth - 100;
+  const containerWidth = window.outerWidth;
   // Make sure taller nav items are fully in view
-  const containerHeight = window.innerHeight - 200;
+  const containerHeight = window.outerHeight;
 
   const placedItems = [];
+
   for (let item of navItems) {
     setMaxDimensions(item, scaleFactor);
 
+    let attempts = 0;
     // Randomly position the element
     let isColliding = false;
     do {
@@ -75,10 +77,12 @@ function styleAndPositionNavItems() {
       item.style.left = `${posX}px`;
       item.style.top = `${posY}px`;
 
-      isColliding = placedItems.some((placedItem) =>
-        isOverlapping(item, placedItem)
-      );
-    } while (isColliding); // if colliding, repeat the loop
+      isColliding = placedItems.some((placedItem) => {
+        const overlap = isOverlapping(item, placedItem);
+        attempts++;
+        return overlap;
+      });
+    } while (isColliding && attempts < 1000); // if colliding, repeat the loop
 
     placedItems.push(item);
   }
@@ -97,18 +101,12 @@ function setMaxDimensions(item, scaleFactor) {
 function isOverlapping(item1, item2) {
   const [x1, y1, w1, h1] = getDimensions(item1);
   const [x2, y2, w2, h2] = getDimensions(item2);
-  // x + w is x-coordinate of the top-right corner
-  // y + h is y-coordinate of the bottom (both edges)
-  if (w1 === 0 || w2 === 0) return false;
 
-  const horizontalOverlap = x1 + w1 > x2 && x2 + w2 > x1;
-  const verticalOverlap = y1 + h1 > y2 && y2 + h2 > y1;
-
-  return horizontalOverlap && verticalOverlap;
+  return !(x1 + w1 <= x2 || x2 + w2 <= x1 || y1 + h1 <= y2 || y2 + h2 <= y1);
 }
 
 function getDimensions(item) {
-  const buffer = 5;
+  const buffer = 2;
   const x = parseFloat(item.style.left);
   const y = parseFloat(item.style.top);
   const w = item.offsetWidth + buffer;
