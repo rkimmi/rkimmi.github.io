@@ -55,9 +55,9 @@ function toggleTheme() {
 function styleAndPositionNavItems() {
   const navItems = document.getElementsByClassName("nav-item");
   const scaleFactor = 1.2;
-  const containerWidth = window.outerWidth;
+  const containerWidth = window.outerWidth - 100;
   // Make sure taller nav items are fully in view
-  const containerHeight = window.outerHeight;
+  const containerHeight = window.outerHeight - 200;
 
   const placedItems = [];
 
