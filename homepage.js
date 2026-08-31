@@ -57,7 +57,7 @@ function styleAndPositionNavItems() {
   const container = document.querySelector("main");
   const bounding = container.getBoundingClientRect();
   const containerWidth = bounding.width || window.outerWidth;
-  const containerHeight = bounding.height ||window.outerHeight;
+  const containerHeight = bounding.height || window.outerHeight;
 
   const placedItems = [];
 
@@ -93,27 +93,32 @@ function isOverlapping(item, x, y, other) {
 
   const [x2, y2, w2, h2] = getDimensions(other);
 
-  return !(
+  const isOverlap = !(
     x + w <= x2 ||
     x2 + w2 <= x ||
     y + h <= y2 ||
     y2 + h2 <= y
   );
+
+	return isOverlap;
 }
 
 function getDimensions(item) {
   const buffer = 2;
   const x = parseFloat(item.style.left);
   const y = parseFloat(item.style.top);
-  const w = (item.dataset.maxWidth || item.offsetWidth) + buffer;
-  const h = (item.dataset.maxHeight || item.offsetHeight) + buffer;
+  const w = parseFloat(item.dataset.maxWidth) || item.offsetWidth + buffer;
+  const h = parseFloat(item.dataset.maxHeight) || item.offsetHeight + buffer;
   return [x, y, w, h];
 }
 
 function generateRandomPosition(item, containerWidth, containerHeight, placedItems) {
   for (let attempt = 0; attempt < 2000; attempt++) {
-    const posX = Math.random() * (containerWidth - (item.dataset.maxWidth || offsetWidth));
-    const posY = Math.random() * (containerHeight - (item.dataset.maxHeight || offsetHeight));
+	const h = parseFloat(item.dataset.maxHeight) || item.offsetHeight;
+	const w = parseFloat(item.dataset.maxWidth) || item.offsetWidts;
+
+    const posX = Math.random() * (containerWidth - w);
+    const posY = Math.random() * (containerHeight - h);
 
     const overlaps = placedItems.some(other => {
       return isOverlapping(item, posX, posY, other);
