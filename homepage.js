@@ -54,55 +54,40 @@ function toggleTheme() {
 
 function styleAndPositionNavItems() {
   const navItems = document.getElementsByClassName("nav-item");
-  const scaleFactor = 1.2;
-  const containerWidth = window.outerWidth - 100;
-  // Make sure taller nav items are fully in view
-  const containerHeight = window.outerHeight - 200;
+  const container = document.querySelector("body");
+  const bounding = container.getBoundingClientRect();
+  const containerWidth = bounding.width || window.outerWidth;
+  const containerHeight = bounding.height ||window.outerHeight;
 
   const placedItems = [];
 
   for (let item of navItems) {
-    setMaxDimensions(item, scaleFactor);
-
-    let attempts = 0;
-    // Randomly position the element
-    let isColliding = false;
-    do {
-      const { posX, posY } = generateRandomPosition(
+    const { posX, posY } = generateRandomPosition(
         item,
         containerWidth,
-        containerHeight
+        containerHeight, 
+		placedItems
       );
 
-      item.style.left = `${posX}px`;
-      item.style.top = `${posY}px`;
-
-      isColliding = placedItems.some((placedItem) => {
-        const overlap = isOverlapping(item, placedItem);
-        attempts++;
-        return overlap;
-      });
-    } while (isColliding && attempts < 1000); // if colliding, repeat the loop
+    item.style.left = `${posX}px`;
+    item.style.top = `${posY}px`;
 
     placedItems.push(item);
   }
 }
 
-function setMaxDimensions(item, scaleFactor) {
-  const baseWidth = item.offsetWidth;
-  const baseHeight = item.offsetHeight;
-  const maxWidth = baseWidth * scaleFactor;
-  const maxHeight = baseHeight * scaleFactor;
+function isOverlapping(item, x, y, other) {
+  const w = parseFloat(item.dataset.maxWidth) || item.offsetWidth;
+  const h = parseFloat(item.dataset.maxHeight) || item.offsetHeight;
 
-  item.dataset.maxWidth = maxWidth;
-  item.dataset.maxHeight = maxHeight;
-}
+  const [x2, y2, w2, h2] = getDimensions(other);
 
-function isOverlapping(item1, item2) {
-  const [x1, y1, w1, h1] = getDimensions(item1);
-  const [x2, y2, w2, h2] = getDimensions(item2);
-
-  return !(x1 + w1 <= x2 || x2 + w2 <= x1 || y1 + h1 <= y2 || y2 + h2 <= y1);
+  return !(
+    x + w <= x2 ||
+    x2 + w2 <= x ||
+    y + h <= y2 ||
+    y2 + h2 <= y
+  );
 }
 
 function getDimensions(item) {
@@ -114,12 +99,20 @@ function getDimensions(item) {
   return [x, y, w, h];
 }
 
-function generateRandomPosition(item, containerWidth, containerHeight) {
-  const maxWidth = parseFloat(item.dataset.maxWidth) || item.offsetWidth;
-  const maxHeight = parseFloat(item.dataset.maxHeight) || item.offsetHeight;
+function generateRandomPosition(item, containerWidth, containerHeight, placedItems) {
+  for (let attempt = 0; attempt < 2000; attempt++) {
+    const posX = Math.random() * (containerWidth - item.offsetWidth);
+    const posY = Math.random() * (containerHeight - item.offsetHeight);
 
-  const posX = Math.random() * (containerWidth - maxWidth);
-  const posY = Math.random() * (containerHeight - maxHeight);
+    const overlaps = placedItems.some(other => {
+      return isOverlapping(item, posX, posY, other);
+    });
 
-  return { posX, posY };
+    if (!overlaps) {
+      return { posX, posY };
+    }
+  }
+
+  return null;
 }
+
