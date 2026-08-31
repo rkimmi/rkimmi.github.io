@@ -54,7 +54,7 @@ function toggleTheme() {
 
 function styleAndPositionNavItems() {
   const navItems = document.getElementsByClassName("nav-item");
-  const container = document.querySelector("body");
+  const container = document.querySelector("main");
   const bounding = container.getBoundingClientRect();
   const containerWidth = bounding.width || window.outerWidth;
   const containerHeight = bounding.height ||window.outerHeight;
@@ -62,6 +62,10 @@ function styleAndPositionNavItems() {
   const placedItems = [];
 
   for (let item of navItems) {
+	const { maxWidth, maxHeight } = getMaxScale(item);
+	  item.dataset.maxWidth = maxWidth;
+	  item.dataset.maxHeight = maxHeight;
+
     const { posX, posY } = generateRandomPosition(
         item,
         containerWidth,
@@ -74,6 +78,13 @@ function styleAndPositionNavItems() {
 
     placedItems.push(item);
   }
+}
+
+function getMaxScale(item) {
+	const scaleFactor = 1;
+	const maxWidth = item.offsetWidth * scaleFactor;
+	const maxHeight = item.offsetHeight * scaleFactor;
+	return { maxWidth, maxHeight };
 }
 
 function isOverlapping(item, x, y, other) {
@@ -94,15 +105,15 @@ function getDimensions(item) {
   const buffer = 2;
   const x = parseFloat(item.style.left);
   const y = parseFloat(item.style.top);
-  const w = item.offsetWidth + buffer;
-  const h = item.offsetHeight + buffer;
+  const w = (item.dataset.maxWidth || item.offsetWidth) + buffer;
+  const h = (item.dataset.maxHeight || item.offsetHeight) + buffer;
   return [x, y, w, h];
 }
 
 function generateRandomPosition(item, containerWidth, containerHeight, placedItems) {
   for (let attempt = 0; attempt < 2000; attempt++) {
-    const posX = Math.random() * (containerWidth - item.offsetWidth);
-    const posY = Math.random() * (containerHeight - item.offsetHeight);
+    const posX = Math.random() * (containerWidth - (item.dataset.maxWidth || offsetWidth));
+    const posY = Math.random() * (containerHeight - (item.dataset.maxHeight || offsetHeight));
 
     const overlaps = placedItems.some(other => {
       return isOverlapping(item, posX, posY, other);

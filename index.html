@@ -30,6 +30,11 @@
         overflow: hidden;
       }
 
+	  main {
+		width: 97vw;
+		height: 97vh;
+	  }
+
       img, a {
         -webkit-touch-callout: none; /* disable long-press menu */
       }
@@ -71,7 +76,7 @@
 		   opacity: 77%;
 	   }
 
-	   .flip {
+	   .top {
 		   z-index: 100;
 	   }
 
@@ -111,8 +116,8 @@
           transform: translate(-110px, -125px);
         }
 		.nav-img-ascii {
-			max-width: 32rem;
-			max-height: 28rem;
+			max-width: 28rem;
+			max-height: 24rem;
 		}
 
 		.nav-img-ss {
@@ -125,7 +130,8 @@
   </head>
   <body>
     <script type="text/javascript" src="./homepage.js"></script>
-    <a class="nav-item flip" href="/photos-blog" aria-label="photos">
+	<main>
+    <a class="nav-item flip top" href="/photos-blog" aria-label="photos">
         <img
           src="./images/shell_front.png"
           class="nav-img-shell front"
@@ -141,7 +147,7 @@
       </div>
     </a>
     <a
-      class="nav-item scale"
+      class="nav-item scale top"
       href="http://www.watl.technology"
       aria-label="WATL"
     >
@@ -168,5 +174,6 @@
     <!-- <a href="/ascii-demo">ASCII demo </a>
     <a href="/audio-visualiser-1">Audio visualiser v1</a>
     <a href="/blog">click</a> -->
+	</main>
   </body>
 </html>
