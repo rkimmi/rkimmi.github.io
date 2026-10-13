@@ -2,6 +2,7 @@ document.addEventListener("DOMContentLoaded", () => {
   setBgColor();
   setupHorizontalScroll();
   setupDrawing();
+  setupNasturtium();
 
   document.querySelectorAll("a.nav-item").forEach((a) => {
     const handleClick = (e) => {
@@ -97,10 +98,10 @@ function setupHorizontalScroll() {
   const updateShellFlip = () => {
     const shellRect = shell.getBoundingClientRect();
     const containerRect = container.getBoundingClientRect();
-    const inView =
-      shellRect.right > containerRect.left &&
-      shellRect.left < containerRect.right;
-    shell.classList.toggle("flipped", inView);
+    const nearPassed =
+      shellRect.left + shellRect.width / 2 <
+      containerRect.left + containerRect.width / 2;
+    shell.classList.toggle("flipped", nearPassed);
   };
 
   container.addEventListener("scroll", updateShellFlip);
@@ -233,4 +234,15 @@ function setupDrawing() {
 
   window.addEventListener("resize", resizeCanvas);
   resizeCanvas();
+}
+
+const DYNAMIC_BG_COLORS = ["#ee1983", "#7b0f14", "#132c8c", "#eff0f3"];
+
+function setupNasturtium() {
+  let colorIndex = 0;
+
+  document.querySelector(".nasturtium").addEventListener("click", () => {
+    document.body.style.backgroundColor = DYNAMIC_BG_COLORS[colorIndex];
+    colorIndex = (colorIndex + 1) % DYNAMIC_BG_COLORS.length;
+  });
 }

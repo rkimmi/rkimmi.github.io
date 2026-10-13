@@ -38,7 +38,7 @@
         gap: 14vw;
         width: 100vw;
         height: 100vh;
-        padding: 0 10vw;
+        padding: 0 10vw 0 25vw;
         box-sizing: border-box;
         overflow-x: auto;
         overflow-y: hidden;
@@ -88,6 +88,17 @@
         opacity: 77%;
       }
 
+      .nav-img-nasturtium {
+        max-width: 10rem;
+        max-height: 10rem;
+      }
+
+      .nav-button {
+        padding: 0;
+        border: none;
+        background: none;
+      }
+
       .top {
         z-index: 100;
       }
@@ -95,6 +106,7 @@
       .flip {
         display: grid;
         top: 5vh;
+        margin-right: 6rem;
       }
 
       .flip .back,
@@ -157,6 +169,18 @@
         transform: scale(1.25);
       }
 
+      .draw-toggle.active::after {
+        content: "";
+        position: absolute;
+        left: 12%;
+        right: 15%;
+        bottom: -0.35rem;
+        height: 3px;
+        width: 10px;
+        border-radius: 1px;
+        background: currentColor;
+      }
+
       body.drawing {
         user-select: none;
         -webkit-user-select: none;
@@ -175,6 +199,10 @@
       }
 
       @media (min-width: 768px) {
+        main {
+          padding: 0 10vw;
+        }
+
         .nav-img-angel {
           max-width: 12rem;
           max-height: 12rem;
@@ -193,8 +221,14 @@
           max-width: 19rem;
         }
 
+        .nav-img-nasturtium {
+          max-width: 14rem;
+          max-height: 14rem;
+        }
+
         .flip {
           top: 15vh;
+          margin-right: 0;
         }
       }
     </style>
@@ -252,6 +286,18 @@
           draggable="false"
         />
       </a>
+      <button
+        class="nav-item nav-button scale nasturtium"
+        type="button"
+        aria-label="NASTURTIUM"
+      >
+        <img
+          class="nav-img-nasturtium"
+          src="./images/nasturtium.png"
+          alt="Nasturtium"
+          draggable="false"
+        />
+      </button>
 
       <!-- <a class="nav-item" href=" " aria-label=""></a> -->
       <!-- <span class="nav-item" onclick="toggleTheme()" aria-label="">>></span> -->
