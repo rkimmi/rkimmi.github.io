@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en" xmlns="http://www.w3.org/1999/html">
   <head>
     <meta charset="UTF-8" />
@@ -15,7 +15,8 @@
         }
       }
 
-      html, body {
+      html,
+      body {
         touch-action: manipulation;
       }
 
@@ -25,20 +26,28 @@
 
       body {
         position: relative;
+        margin: 0;
         width: 100vw;
         height: 100vh;
         overflow: hidden;
       }
 
-	  main {
-		width: 97vw;
-		height: 97vh;
-	  }
+      main {
+        display: flex;
+        align-items: center;
+        gap: 14vw;
+        width: 100vw;
+        height: 100vh;
+        padding: 0 10vw;
+        box-sizing: border-box;
+        overflow-x: auto;
+        overflow-y: hidden;
+      }
 
-      img, a {
+      img,
+      a {
         -webkit-touch-callout: none; /* disable long-press menu */
       }
-      
 
       title {
         color: dodgerblue;
@@ -46,56 +55,67 @@
 
       .nav-item {
         cursor: pointer;
-        position: absolute;
+        position: relative;
+        flex-shrink: 0;
         text-decoration: none;
         transition: transform 3s ease;
         filter: drop-shadow(15px 10px 4px #00000083);
       }
 
-      .scale:hover, .scale:active, .scale.clicked {
+      .scale:hover,
+      .scale:active,
+      .scale.clicked {
         transform: scale(1.2);
       }
 
       .nav-img-angel {
-        max-width: 10rem;
-        max-height: 10rem;
+        max-width: 12.5rem;
+        max-height: 12.5rem;
       }
 
       .nav-img-shell {
-        max-width: 7rem;
-        max-height: 7rem;
+        max-width: 9rem;
+        max-height: 9rem;
       }
 
-       .nav-img-ascii {
-		 max-width: 14rem;
-		 max-height: 12rem;
-	   }
+      .nav-img-ascii {
+        max-width: 17.5rem;
+        max-height: 15rem;
+      }
 
-	   .nav-img-ss {
-		   max-width: 10rem;
-		   opacity: 77%;
-	   }
+      .nav-img-ss {
+        max-width: 12.5rem;
+        opacity: 77%;
+      }
 
-	   .top {
-		   z-index: 100;
-	   }
+      .top {
+        z-index: 100;
+      }
+
+      .flip {
+        display: grid;
+        top: 5vh;
+      }
 
       .flip .back,
       .flip .front {
-        transition: opacity 1.5s ease;
+        grid-area: 1 / 1;
+        transition: opacity 0.6s ease 200ms;
       }
 
       .flip .back {
         opacity: 0;
-        transform: translate(-55px, -65px);
+        transform: translate(65%, -65%);
       }
 
-      .flip:hover .back, .flip:active .back, .clicked .back {
+      .flip:hover .back,
+      .flipped .back {
         opacity: 1;
         user-select: none;
       }
 
-      .flip:hover .front, .flip:active .front, .clicked .front {
+      .flip:hover .front,
+      .flipped .front {
         opacity: 0;
         user-select: none;
       }
@@ -110,28 +130,49 @@
           max-width: 16rem;
           max-height: 16rem;
         }
-
-        .flip .back {
-          opacity: 0;
-          transform: translate(-110px, -125px);
+        .nav-img-ascii {
+          max-width: 28rem;
+          max-height: 24rem;
         }
-		.nav-img-ascii {
-			max-width: 28rem;
-			max-height: 24rem;
-		}
 
-		.nav-img-ss {
-			max-width: 19rem;
-		}
+        .nav-img-ss {
+          max-width: 19rem;
+        }
 
+        .flip {
+          top: 15vh;
+        }
       }
-
     </style>
   </head>
   <body>
     <script type="text/javascript" src="./homepage.js" defer></script>
-	<main>
-    <a class="nav-item flip top" href="/photos-blog" aria-label="photos">
+    <main>
+      <a
+        class="nav-item scale top"
+        href="http://www.watl.technology"
+        aria-label="WATL"
+      >
+        <img
+          class="nav-img-angel"
+          src="./images/angel.png"
+          alt="WATL online"
+          draggable="false"
+        />
+      </a>
+      <a
+        class="nav-item scale"
+        href="/ascii-demo"
+        aria-label="ASCII IMAGE GENERATOR"
+      >
+        <img
+          class="nav-img-ascii"
+          src="./images/butterfly-ascii.gif"
+          alt="ASCII image generator"
+          draggable="false"
+        />
+      </a>
+      <a class="nav-item flip top" href="/photos-blog" aria-label="photos">
         <img
           src="./images/shell_front.png"
           class="nav-img-shell front"
@@ -144,36 +185,26 @@
           alt="photo blog"
           draggable="false"
         />
-      </div>
-    </a>
-    <a
-      class="nav-item scale top"
-      href="http://www.watl.technology"
-      aria-label="WATL"
-    >
-      <img class="nav-img-angel" src="./images/angel.png" alt="WATL online" draggable="false" />
-    </a>
-	 <a
-      class="nav-item scale"
-      href="/ascii-demo"
-      aria-label="ASCII IMAGE GENERATOR"
-    >
-      <img class="nav-img-ascii" src="./images/butterfly-ascii.gif" alt="ASCII image generator" draggable="false" />
-    </a>
-	<a
-      class="nav-item scale"
-      href="https://www.youtube.com/watch?v=lRvj7iDaqqs&list=PLGsbaNCgq3VU"
-      aria-label="DATAMOSH"
-    >
-      <img class="nav-img-ss" src="./images/datamosh-ss.png" alt="Datamosh video edits" draggable="false" />
-    </a>
+      </a>
+      <a
+        class="nav-item scale"
+        href="https://www.youtube.com/watch?v=lRvj7iDaqqs&list=PLGsbaNCgq3VU"
+        aria-label="DATAMOSH"
+      >
+        <img
+          class="nav-img-ss"
+          src="./images/datamosh-ss.png"
+          alt="Datamosh video edits"
+          draggable="false"
+        />
+      </a>
 
-    <!-- <a class="nav-item" href=" " aria-label=""></a> -->
-    <!-- <span class="nav-item" onclick="toggleTheme()" aria-label="">>></span> -->
+      <!-- <a class="nav-item" href=" " aria-label=""></a> -->
+      <!-- <span class="nav-item" onclick="toggleTheme()" aria-label="">>></span> -->
 
-    <!-- <a href="/ascii-demo">ASCII demo </a>
+      <!-- <a href="/ascii-demo">ASCII demo </a>
     <a href="/audio-visualiser-1">Audio visualiser v1</a>
     <a href="/blog">click</a> -->
-	</main>
+    </main>
   </body>
 </html>
