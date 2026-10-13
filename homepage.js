@@ -102,8 +102,8 @@ function setupHorizontalScroll() {
   updateShellFlip();
 }
 
-const HOLD_MS = 400;
-const HOLD_MOVE_TOLERANCE = 10;
+const TOUCH_HOLD_MS = 200;
+const TOUCH_MOVE_TOLERANCE = 10;
 
 function setupDrawing() {
   const canvas = document.querySelector(".draw-canvas");
@@ -112,7 +112,6 @@ function setupDrawing() {
 
   let drawMode = false;
   let drawing = false;
-  let justDrew = false;
   let holdTimer = null;
   let startX = 0;
   let startY = 0;
@@ -153,28 +152,46 @@ function setupDrawing() {
     holdTimer = null;
   };
 
-  toggle.addEventListener("click", () => {
-    drawMode = !drawMode;
+  const endStroke = () => {
+    cancelHold();
+    drawing = false;
+  };
+
+  const setDrawMode = (on) => {
+    drawMode = on;
+    endStroke();
     toggle.classList.toggle("active", drawMode);
     toggle.setAttribute("aria-pressed", drawMode);
     document.body.classList.toggle("drawing", drawMode);
+  };
+
+  toggle.addEventListener("click", () => setDrawMode(!drawMode));
+
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape" && drawMode) setDrawMode(false);
   });
 
   document.addEventListener("pointerdown", (e) => {
     if (!drawMode || toggle.contains(e.target)) return;
+
+    if (e.pointerType !== "touch") {
+      e.preventDefault();
+      startStroke(e.clientX, e.clientY);
+      return;
+    }
 
     startX = e.clientX;
     startY = e.clientY;
     holdTimer = setTimeout(() => {
       holdTimer = null;
       startStroke(startX, startY);
-    }, HOLD_MS);
+    }, TOUCH_HOLD_MS);
   });
 
   document.addEventListener("pointermove", (e) => {
     if (holdTimer) {
       const moved = Math.hypot(e.clientX - startX, e.clientY - startY);
-      if (moved > HOLD_MOVE_TOLERANCE) cancelHold();
+      if (moved > TOUCH_MOVE_TOLERANCE) cancelHold();
       return;
     }
     if (!drawing) return;
@@ -182,16 +199,6 @@ function setupDrawing() {
     ctx.lineTo(e.clientX, e.clientY);
     ctx.stroke();
   });
-
-  const endStroke = () => {
-    cancelHold();
-    if (!drawing) return;
-    drawing = false;
-    justDrew = true;
-    setTimeout(() => {
-      justDrew = false;
-    }, 300);
-  };
 
   document.addEventListener("pointerup", endStroke);
   document.addEventListener("pointercancel", endStroke);
@@ -209,7 +216,7 @@ function setupDrawing() {
   document.addEventListener(
     "click",
     (e) => {
-      if (!justDrew || toggle.contains(e.target)) return;
+      if (!drawMode || toggle.contains(e.target)) return;
       e.preventDefault();
       e.stopPropagation();
     },
