@@ -95,11 +95,15 @@ function setupHorizontalScroll() {
   );
 
   const updateShellFlip = () => {
-    shell.classList.toggle("flipped", container.scrollLeft > 0);
+    const shellRect = shell.getBoundingClientRect();
+    const containerRect = container.getBoundingClientRect();
+    const inView =
+      shellRect.right > containerRect.left &&
+      shellRect.left < containerRect.right;
+    shell.classList.toggle("flipped", inView);
   };
 
   container.addEventListener("scroll", updateShellFlip);
-  updateShellFlip();
 }
 
 const TOUCH_HOLD_MS = 200;
