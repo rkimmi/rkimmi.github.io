@@ -120,6 +120,41 @@
         user-select: none;
       }
 
+      .draw-canvas {
+        position: fixed;
+        inset: 0;
+        width: 100vw;
+        height: 100vh;
+        z-index: 200;
+        pointer-events: none;
+        mix-blend-mode: difference;
+      }
+
+      .draw-toggle {
+        position: fixed;
+        left: 1.5rem;
+        bottom: 1.5rem;
+        z-index: 300;
+        width: 2.5rem;
+        height: 2.5rem;
+        padding: 0;
+        border: none;
+        border-radius: 50%;
+        background: #fff;
+        mix-blend-mode: difference;
+        cursor: pointer;
+        transition: transform 0.2s ease;
+      }
+
+      .draw-toggle.active {
+        transform: scale(1.25);
+      }
+
+      body.drawing {
+        user-select: none;
+        -webkit-user-select: none;
+      }
+
       @media (min-width: 768px) {
         .nav-img-angel {
           max-width: 12rem;
@@ -206,5 +241,12 @@
     <a href="/audio-visualiser-1">Audio visualiser v1</a>
     <a href="/blog">click</a> -->
     </main>
+    <canvas class="draw-canvas"></canvas>
+    <button
+      class="draw-toggle"
+      type="button"
+      aria-label="draw"
+      aria-pressed="false"
+    ></button>
   </body>
 </html>
